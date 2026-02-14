@@ -25,7 +25,7 @@
     <string name="notifications">Notifications</string>
     <string name="alarms_enabled">Alarms</string>
     <string name="export">Export</string>
-    <string name="import">Import</string>
+    <string name="import_data">Import</string>
     <string name="clear_data">Clear Data</string>
     <string name="storage_info">Storage Info</string>
 </resources>
