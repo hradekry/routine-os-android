@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:name=".RoutineOSApp"
@@ -51,11 +54,18 @@
             </intent-filter>
         </receiver>
 
-        <!-- Foreground service for persistent notifications -->
+        <!-- Reschedule alarms helper -->
         <service
             android:name=".services.AlarmService"
             android:enabled="true"
             android:exported="false" />
+
+        <!-- Looping alarm sound service -->
+        <service
+            android:name=".services.AlarmSoundService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
