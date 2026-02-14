@@ -24,6 +24,25 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Restore debug keystore cache
+        id: keystore-cache
+        uses: actions/cache@v4
+        with:
+          path: app/debug.keystore
+          key: debug-keystore-v1
+
+      - name: Generate debug keystore
+        if: steps.keystore-cache.outputs.cache-hit != 'true'
+        run: |
+          keytool -genkeypair -v \
+            -keystore app/debug.keystore \
+            -alias routineos \
+            -keyalg RSA -keysize 2048 \
+            -validity 36500 \
+            -storepass routineos \
+            -keypass routineos \
+            -dname "CN=RoutineOS, OU=Debug, O=RoutineOS, L=Prague, S=Prague, C=CZ"
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:

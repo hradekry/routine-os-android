@@ -11,13 +11,28 @@ android {
         applicationId "com.routineos"
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        debug {
+            def ks = file('debug.keystore')
+            if (ks.exists()) {
+                storeFile ks
+                storePassword 'routineos'
+                keyAlias 'routineos'
+                keyPassword 'routineos'
+            }
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
