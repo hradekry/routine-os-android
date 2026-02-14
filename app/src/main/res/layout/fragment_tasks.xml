@@ -22,14 +22,4 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Add Task Button -->
-    <Button
-        android:id="@+id/addTaskButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Task"
-        android:backgroundTint="@color/routine_purple"
-        android:textColor="@color/white"
-        android:layout_marginTop="16dp" />
-
 </LinearLayout>

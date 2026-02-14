@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,7 +11,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="12dp">
+
+        <ImageButton
+            android:id="@+id/previousMonthButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_chevron_left"
+            android:contentDescription="Previous month"
+            android:tint="@color/routine_purple" />
 
         <TextView
             android:id="@+id/monthYearText"
@@ -21,62 +29,68 @@
             android:layout_weight="1"
             android:text="January 2024"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/previousMonthButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_chevron_left"
-                android:tint="@color/routine_purple" />
-
-            <ImageButton
-                android:id="@+id/nextMonthButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_chevron_right"
-                android:tint="@color/routine_purple" />
-
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/nextMonthButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_chevron_right"
+            android:contentDescription="Next month"
+            android:tint="@color/routine_purple" />
 
     </LinearLayout>
 
-    <!-- Calendar Grid (Simplified) -->
-    <TextView
+    <!-- Day-of-week headers -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:text="Calendar Grid\n(Implementation needed)"
-        android:gravity="center"
-        android:textColor="@color/gray_400"
-        android:background="@color/dark_surface"
-        android:layout_marginBottom="16dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="4dp">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Mon" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Tue" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Wed" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Fri" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sat" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sun" android:textColor="@color/gray_400" android:textSize="11sp" android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Calendar Grid -->
+    <GridLayout
+        android:id="@+id/calendarGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="7"
+        android:layout_marginBottom="8dp" />
 
     <!-- Today Button -->
     <Button
         android:id="@+id/todayButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:text="Today"
+        android:textSize="12sp"
         android:textColor="@color/routine_purple"
         android:background="@android:color/transparent"
         android:layout_gravity="center"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="12dp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
 
     <!-- Events Section -->
     <TextView
+        android:id="@+id/eventsHeaderText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Events for Today"
         android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
@@ -85,15 +99,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-
-    <!-- Add Event Button -->
-    <Button
-        android:id="@+id/addEventButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Event"
-        android:backgroundTint="@color/routine_purple"
-        android:textColor="@color/white"
-        android:layout_marginTop="16dp" />
 
 </LinearLayout>

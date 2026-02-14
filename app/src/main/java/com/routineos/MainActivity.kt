@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -13,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.routineos.databinding.ActivityMainBinding
 import com.routineos.ui.calendar.CalendarFragment
 import com.routineos.ui.coach.CoachFragment
@@ -144,15 +142,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
-    fun showFab(show: Boolean) {
-        binding.fab.isVisible = show
-    }
-    
-    fun setFabIcon(iconRes: Int) {
-        binding.fab.setImageResource(iconRes)
-    }
-    
-    fun setFabClickListener(listener: View.OnClickListener) {
-        binding.fab.setOnClickListener(listener)
-    }
 }

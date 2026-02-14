@@ -46,72 +46,92 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="8dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/progressButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_weight="1"
             android:text="Progress"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:backgroundTint="@color/routine_purple"
             android:textColor="@color/white"
             android:layout_marginEnd="4dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/recommendButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_weight="1"
             android:text="Recommend"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:backgroundTint="@color/routine_purple"
             android:textColor="@color/white"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/motivateButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_weight="1"
             android:text="Motivate"
-            android:textSize="12sp"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:backgroundTint="@color/routine_purple"
             android:textColor="@color/white"
             android:layout_marginStart="4dp" />
 
     </LinearLayout>
 
-    <!-- More Actions -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="12dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/exportButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_weight="1"
             android:text="Export"
-            android:textSize="12sp"
-            android:background="@android:color/transparent"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:textColor="@color/routine_purple"
-            android:layout_marginEnd="4dp" />
+            app:strokeColor="@color/routine_purple"
+            app:strokeWidth="1dp"
+            android:layout_marginEnd="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/importButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_weight="1"
             android:text="Import"
-            android:textSize="12sp"
-            android:background="@android:color/transparent"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:textColor="@color/routine_purple"
-            android:layout_marginStart="4dp" />
+            app:strokeColor="@color/routine_purple"
+            app:strokeWidth="1dp"
+            android:layout_marginStart="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
 
     </LinearLayout>
 

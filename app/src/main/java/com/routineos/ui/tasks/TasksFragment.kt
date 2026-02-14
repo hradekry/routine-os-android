@@ -59,9 +59,7 @@ class TasksFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
-        binding.addTaskButton.setOnClickListener {
-            showAddTaskDialog()
-        }
+        // Add task is triggered via FAB in MainActivity
     }
 
     private fun observeViewModel() {

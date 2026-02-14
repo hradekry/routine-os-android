@@ -45,15 +45,6 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/contextSwitcher"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Switch context"
-            android:src="@drawable/ic_switch"
-            android:tint="@color/routine_purple" />
-
     </LinearLayout>
 
     <!-- Fragment Container -->
