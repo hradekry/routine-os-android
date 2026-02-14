@@ -96,7 +96,7 @@ class CalendarFragment : Fragment() {
     private fun filterEventsForDate(cal: Calendar) {
         val dateKey = dateKeyFormat.format(cal.time)
         val events = viewModel.events.value ?: emptyList()
-        val filtered = events.filter { it.date == dateKey || it.type == "recurring" }
+        val filtered = events.filter { it.date == dateKey || it.type == "recurring" }.toList()
         eventAdapter.submitList(filtered)
 
         val dayFormat = SimpleDateFormat("MMMM d", Locale.getDefault())

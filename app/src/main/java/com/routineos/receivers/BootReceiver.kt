@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import com.routineos.services.AlarmScheduler
-import com.routineos.services.AlarmService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,10 +18,6 @@ class BootReceiver : BroadcastReceiver() {
             
             Log.d("BootReceiver", "Boot completed, rescheduling alarms")
             
-            // Start the alarm service
-            AlarmService.startService(context)
-            
-            // Reschedule all existing alarms
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     AlarmScheduler.rescheduleAllAlarms(context)

@@ -8,16 +8,10 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import com.routineos.data.Repository
-import com.routineos.data.formatDateKey
 import com.routineos.receivers.AlarmReceiver
 import com.routineos.data.models.Event
-import com.routineos.data.models.Task
-import java.text.SimpleDateFormat
-import java.util.*
 
 object AlarmScheduler {
-    
-    private val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     
     fun scheduleAlarm(context: Context, title: String, description: String, alarmTime: Long, isRecurring: Boolean, eventId: String? = null, taskId: String? = null) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -96,18 +90,17 @@ object AlarmScheduler {
         
         if (!settings.alarmsEnabled) return
         
-        val today = formatDateKey(Date())
+        val now = System.currentTimeMillis()
         
         events.forEach { event ->
             if (event.alarmEnabled && event.time != null && event.alarmTimestamp != null) {
-                // Only schedule if the event is today or in the future
-                if (event.date >= today) {
+                if (event.alarmTimestamp > now) {
                     scheduleAlarm(
                         context = context,
                         title = event.title,
                         description = event.description,
                         alarmTime = event.alarmTimestamp,
-                        isRecurring = event.type == "recurring",
+                        isRecurring = false,
                         eventId = event.id
                     )
                 }
@@ -115,66 +108,19 @@ object AlarmScheduler {
         }
     }
     
-    suspend fun scheduleTaskAlarms(context: Context, tasks: List<Task>) {
-        val repository = Repository(context)
-        val settings = repository.getSettings()
-        
-        if (!settings.alarmsEnabled) return
-        
-        val today = formatDateKey(Date())
-        
-        tasks.forEach { task ->
-            // Schedule task reminders at 8 AM for daily tasks
-            if (task.type == "recurring") {
-                val calendar = Calendar.getInstance().apply {
-                    set(Calendar.HOUR_OF_DAY, 8)
-                    set(Calendar.MINUTE, 0)
-                    set(Calendar.SECOND, 0)
-                    set(Calendar.MILLISECOND, 0)
-                    
-                    // If it's already past 8 AM, schedule for tomorrow
-                    if (timeInMillis <= System.currentTimeMillis()) {
-                        add(Calendar.DAY_OF_YEAR, 1)
-                    }
-                }
-                
-                scheduleAlarm(
-                    context = context,
-                    title = "Task Reminder: ${task.title}",
-                    description = task.description.ifEmpty { "Don't forget to complete this task today!" },
-                    alarmTime = calendar.timeInMillis,
-                    isRecurring = true,
-                    taskId = task.id
-                )
-            }
-        }
-    }
-    
     suspend fun rescheduleAllAlarms(context: Context) {
         val repository = Repository(context)
         val events = repository.getEvents()
-        val tasks = repository.getTasks()
         
-        // Cancel all existing alarms first
-        cancelAllAlarms(context, events, tasks)
-        
-        // Reschedule
-        scheduleEventAlarms(context, events)
-        scheduleTaskAlarms(context, tasks)
-    }
-    
-    private fun cancelAllAlarms(context: Context, events: List<Event>, tasks: List<Task>) {
+        // Cancel existing event alarms first
         events.forEach { event ->
             if (event.alarmEnabled) {
                 cancelAlarm(context, eventId = event.id)
             }
         }
         
-        tasks.forEach { task ->
-            if (task.type == "recurring") {
-                cancelAlarm(context, taskId = task.id)
-            }
-        }
+        // Reschedule future event alarms only
+        scheduleEventAlarms(context, events)
     }
     
     fun requestExactAlarmPermission(context: Context): Boolean {

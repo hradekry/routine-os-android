@@ -64,7 +64,7 @@ class TasksFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.tasks.observe(viewLifecycleOwner) { tasks ->
-            taskAdapter.submitList(tasks)
+            taskAdapter.submitList(tasks.toList())
         }
         viewModel.error.observe(viewLifecycleOwner) { error ->
             error?.let {

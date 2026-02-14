@@ -43,17 +43,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                _events.value = repository.getEvents()
-                _tasks.value = repository.getTasks()
+                _events.value = ArrayList(repository.getEvents())
+                _tasks.value = ArrayList(repository.getTasks())
                 _settings.value = repository.getSettings()
                 _currentContext.value = repository.getCurrentContext()
-                
-                // Schedule alarms if enabled
-                val settings = _settings.value ?: AppSettings()
-                if (settings.alarmsEnabled) {
-                    AlarmScheduler.scheduleEventAlarms(context, _events.value ?: emptyList())
-                    AlarmScheduler.scheduleTaskAlarms(context, _tasks.value ?: emptyList())
-                }
             } catch (e: Exception) {
                 _error.value = "Failed to load data: ${e.message}"
             } finally {
@@ -63,11 +56,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
     
     fun onPermissionsGranted() {
-        // Reschedule alarms now that permissions are granted
         viewModelScope.launch {
             try {
                 AlarmScheduler.scheduleEventAlarms(context, _events.value ?: emptyList())
-                AlarmScheduler.scheduleTaskAlarms(context, _tasks.value ?: emptyList())
             } catch (e: Exception) {
                 _error.value = "Failed to schedule alarms: ${e.message}"
             }
@@ -78,12 +69,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 repository.saveEvents(events)
-                _events.value = events
+                _events.value = ArrayList(events)
                 
-                // Reschedule alarms
+                // Schedule alarms only for future events
                 val settings = _settings.value ?: AppSettings()
                 if (settings.alarmsEnabled) {
-                    AlarmScheduler.scheduleEventAlarms(context, events)
+                    val now = System.currentTimeMillis()
+                    events.filter { it.alarmEnabled && it.alarmTimestamp != null && it.alarmTimestamp > now }
+                        .forEach { event ->
+                            AlarmScheduler.scheduleAlarm(
+                                context, event.title, event.description,
+                                event.alarmTimestamp!!, false, eventId = event.id
+                            )
+                        }
                 }
             } catch (e: Exception) {
                 _error.value = "Failed to save events: ${e.message}"
@@ -95,13 +93,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 repository.saveTasks(tasks)
-                _tasks.value = tasks
-                
-                // Reschedule alarms
-                val settings = _settings.value ?: AppSettings()
-                if (settings.alarmsEnabled) {
-                    AlarmScheduler.scheduleTaskAlarms(context, tasks)
-                }
+                _tasks.value = ArrayList(tasks)
             } catch (e: Exception) {
                 _error.value = "Failed to save tasks: ${e.message}"
             }
@@ -114,20 +106,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 repository.saveSettings(settings)
                 _settings.value = settings
                 
-                // Reschedule alarms based on new settings
                 if (settings.alarmsEnabled) {
                     AlarmScheduler.scheduleEventAlarms(context, _events.value ?: emptyList())
-                    AlarmScheduler.scheduleTaskAlarms(context, _tasks.value ?: emptyList())
                 } else {
-                    // Cancel all alarms if disabled
                     _events.value?.forEach { event ->
                         if (event.alarmEnabled) {
                             AlarmScheduler.cancelAlarm(context, eventId = event.id)
-                        }
-                    }
-                    _tasks.value?.forEach { task ->
-                        if (task.type == "recurring") {
-                            AlarmScheduler.cancelAlarm(context, taskId = task.id)
                         }
                     }
                 }
