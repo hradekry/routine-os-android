@@ -1,6 +1,7 @@
 package com.routineos.ui.tasks
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -114,6 +115,10 @@ class TasksFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+            .apply {
+                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE)
+                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.WHITE)
+            }
     }
 
     private fun showEditTaskDialog(task: Task) {
@@ -144,6 +149,10 @@ class TasksFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+            .apply {
+                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE)
+                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.WHITE)
+            }
     }
 
     private fun showDeleteTaskDialog(task: Task) {
@@ -157,6 +166,10 @@ class TasksFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+            .apply {
+                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE)
+                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.WHITE)
+            }
     }
 
     private fun toggleTask(task: Task) {

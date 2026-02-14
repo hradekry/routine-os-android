@@ -1,6 +1,7 @@
 package com.routineos.ui.calendar
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
@@ -239,6 +240,10 @@ class CalendarFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+            .apply {
+                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE)
+                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.WHITE)
+            }
     }
 
     private fun showDeleteEventDialog(event: Event) {
@@ -253,6 +258,10 @@ class CalendarFragment : Fragment() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+            .apply {
+                getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.WHITE)
+                getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.WHITE)
+            }
     }
 
     override fun onDestroyView() {
