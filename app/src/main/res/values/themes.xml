@@ -34,6 +34,6 @@
     </style>
 
     <style name="DarkDialogButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/routine_purple</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

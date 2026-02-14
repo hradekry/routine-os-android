@@ -37,7 +37,7 @@ class AlarmReceiver : BroadcastReceiver() {
                 ).apply {
                     description = "Alarms and reminders"
                     enableVibration(true)
-                    vibrationPattern = longArrayOf(0, 500, 300, 500, 300, 500)
+                    vibrationPattern = longArrayOf(0, 300, 200, 300, 200, 300)
                     setSound(
                         RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),
                         AudioAttributes.Builder()
@@ -69,7 +69,7 @@ class AlarmReceiver : BroadcastReceiver() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM))
-            .setVibrate(longArrayOf(0, 500, 300, 500, 300, 500))
+            .setVibrate(longArrayOf(0, 300, 200, 300, 200, 300))
             .build()
 
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
