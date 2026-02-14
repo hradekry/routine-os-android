@@ -12,9 +12,6 @@ import com.routineos.data.formatDateKey
 import com.routineos.receivers.AlarmReceiver
 import com.routineos.data.models.Event
 import com.routineos.data.models.Task
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 

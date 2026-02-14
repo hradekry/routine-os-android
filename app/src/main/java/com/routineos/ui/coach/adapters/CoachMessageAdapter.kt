@@ -2,9 +2,11 @@ package com.routineos.ui.coach.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.routineos.R
 import com.routineos.databinding.ItemCoachMessageBinding
 
 data class CoachMessage(
@@ -42,22 +44,23 @@ class CoachMessageAdapter : ListAdapter<CoachMessage, CoachMessageAdapter.Messag
             binding.timestampText.text = message.timestamp
 
             // Set appearance based on message type
+            val ctx = itemView.context
             when (message.type) {
                 "user" -> {
-                    binding.messageCard.setCardBackgroundColor(com.routineos.R.color.routine_purple)
-                    binding.messageText.setTextColor(itemView.context.getColor(com.routineos.R.color.black))
+                    binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.routine_purple))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.black))
                 }
                 "coach" -> {
-                    binding.messageCard.setCardBackgroundColor(com.routineos.R.color.dark_surface)
-                    binding.messageText.setTextColor(itemView.context.getColor(com.routineos.R.color.white))
+                    binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.dark_surface))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.white))
                 }
                 "motivate" -> {
-                    binding.messageCard.setCardBackgroundColor(com.routineos.R.color.success_green)
-                    binding.messageText.setTextColor(itemView.context.getColor(com.routineos.R.color.black))
+                    binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.success_green))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.black))
                 }
                 "error" -> {
-                    binding.messageCard.setCardBackgroundColor(com.routineos.R.color.error_red)
-                    binding.messageText.setTextColor(itemView.context.getColor(com.routineos.R.color.white))
+                    binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.error_red))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.white))
                 }
             }
 

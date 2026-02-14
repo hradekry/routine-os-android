@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.routineos.databinding.FragmentCoachBinding
 import com.routineos.ui.coach.adapters.CoachMessageAdapter
@@ -19,7 +18,7 @@ class CoachFragment : Fragment() {
     
     private var _binding: FragmentCoachBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MainViewModel by viewModels({ requireActivity() })
+    private val viewModel: MainViewModel by activityViewModels()
     private lateinit var messageAdapter: CoachMessageAdapter
     
     override fun onCreateView(
