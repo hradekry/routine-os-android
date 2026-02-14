@@ -21,31 +21,18 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-
-      - name: Generate Gradle Wrapper
-        run: gradle wrapper --gradle-version 8.4
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug
+        run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: routine-os-debug
           path: app/build/outputs/apk/debug/*.apk
-          retention-days: 30
-
-      - name: Build Release APK
-        run: ./gradlew assembleRelease
-
-      - name: Upload Release APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: routine-os-release
-          path: app/build/outputs/apk/release/*.apk
           retention-days: 30
