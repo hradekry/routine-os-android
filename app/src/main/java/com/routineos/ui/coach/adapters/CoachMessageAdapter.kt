@@ -48,7 +48,7 @@ class CoachMessageAdapter : ListAdapter<CoachMessage, CoachMessageAdapter.Messag
             when (message.type) {
                 "user" -> {
                     binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.routine_purple))
-                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.black))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.white))
                 }
                 "coach" -> {
                     binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.dark_surface))
@@ -56,7 +56,7 @@ class CoachMessageAdapter : ListAdapter<CoachMessage, CoachMessageAdapter.Messag
                 }
                 "motivate" -> {
                     binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.success_green))
-                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.black))
+                    binding.messageText.setTextColor(ContextCompat.getColor(ctx, R.color.white))
                 }
                 "error" -> {
                     binding.messageCard.setCardBackgroundColor(ContextCompat.getColor(ctx, R.color.error_red))
