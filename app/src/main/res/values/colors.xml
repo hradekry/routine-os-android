@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Routine OS Colors -->
+    <color name="routine_purple">#A855F7</color>
+    <color name="routine_purple_light">#D8B4FE</color>
+    <color name="dark_surface">#0A0A0A</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="success_green">#22C55E</color>
+    <color name="warning_yellow">#F59E0B</color>
+    <color name="error_red">#EF4444</color>
+</resources>

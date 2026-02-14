@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Routine OS</string>
+    <string name="calendar">Calendar</string>
+    <string name="tasks">Daily Tasks</string>
+    <string name="coach">The Coach</string>
+    <string name="today">Today</string>
+    <string name="add_event">Add Event</string>
+    <string name="add_task">Add Task</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="alarm">Alarm</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="complete">Complete</string>
+    <string name="skip">Skip</string>
+    <string name="trackable">Trackable</string>
+    <string name="target">Target</string>
+    <string name="unit">Unit</string>
+    <string name="increment">Increment</string>
+    <string name="progress">Progress</string>
+    <string name="notifications">Notifications</string>
+    <string name="alarms_enabled">Alarms</string>
+    <string name="export">Export</string>
+    <string name="import">Import</string>
+    <string name="clear_data">Clear Data</string>
+    <string name="storage_info">Storage Info</string>
+</resources>
