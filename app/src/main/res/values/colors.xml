@@ -11,7 +11,9 @@
     <!-- Routine OS Colors -->
     <color name="routine_purple">#A855F7</color>
     <color name="routine_purple_light">#D8B4FE</color>
+    <color name="routine_purple_dark">#7C3AED</color>
     <color name="dark_surface">#0A0A0A</color>
+    <color name="card_background">#141414</color>
     <color name="gray_400">#9CA3AF</color>
     <color name="gray_600">#4B5563</color>
     <color name="success_green">#22C55E</color>

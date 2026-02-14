@@ -120,26 +120,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/dark_surface"
+        android:background="@color/card_background"
+        android:gravity="center_vertical"
         android:padding="8dp">
 
         <EditText
             android:id="@+id/messageInput"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="44dp"
             android:layout_weight="1"
             android:hint="Command the Coach..."
             android:textColor="@color/white"
             android:textColorHint="@color/gray_400"
-            android:background="@android:color/transparent"
+            android:backgroundTint="@color/gray_600"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:textSize="14sp"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:singleLine="true"
             android:layout_marginEnd="8dp" />
 
         <ImageButton
             android:id="@+id/sendButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_send"
+            android:contentDescription="Send"
             android:tint="@color/routine_purple" />
 
     </LinearLayout>

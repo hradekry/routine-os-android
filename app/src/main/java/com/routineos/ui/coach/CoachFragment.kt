@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -50,13 +51,22 @@ class CoachFragment : Fragment() {
         }
     }
     
+    private fun sendMessage() {
+        val message = binding.messageInput.text?.toString()?.trim() ?: ""
+        if (message.isNotEmpty()) {
+            processCommand(message)
+            binding.messageInput.setText("")
+        }
+    }
+
     private fun setupClickListeners() {
-        binding.sendButton.setOnClickListener {
-            val message = binding.messageInput.text.toString().trim()
-            if (message.isNotEmpty()) {
-                processCommand(message)
-                binding.messageInput.text.clear()
-            }
+        binding.sendButton.setOnClickListener { sendMessage() }
+
+        binding.messageInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEND) {
+                sendMessage()
+                true
+            } else false
         }
         
         binding.progressButton.setOnClickListener {

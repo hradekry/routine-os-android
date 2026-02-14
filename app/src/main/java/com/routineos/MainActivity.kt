@@ -52,31 +52,45 @@ class MainActivity : AppCompatActivity() {
         }
     }
     
+    private var currentTab = R.id.nav_calendar
+
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
+            currentTab = item.itemId
             when (item.itemId) {
                 R.id.nav_calendar -> {
                     loadFragment(CalendarFragment())
                     binding.titleText.text = getString(R.string.calendar)
                     binding.subtitleText.text = getString(R.string.today)
+                    binding.fab.isVisible = true
                     true
                 }
                 R.id.nav_tasks -> {
                     loadFragment(TasksFragment())
                     binding.titleText.text = getString(R.string.tasks)
                     binding.subtitleText.text = getString(R.string.today)
+                    binding.fab.isVisible = true
                     true
                 }
                 R.id.nav_coach -> {
                     loadFragment(CoachFragment())
                     binding.titleText.text = getString(R.string.coach)
                     binding.subtitleText.text = "Active"
+                    binding.fab.isVisible = false
                     true
                 }
                 else -> false
             }
         }
-        
+
+        binding.fab.setOnClickListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            when (fragment) {
+                is CalendarFragment -> fragment.showAddEventDialog()
+                is TasksFragment -> fragment.showAddTaskDialog()
+            }
+        }
+
         // Set default selection
         binding.bottomNavigation.selectedItemId = R.id.nav_calendar
     }
