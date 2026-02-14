@@ -2,9 +2,11 @@ package com.routineos.ui.tasks.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.routineos.R
 import com.routineos.data.models.Task
 import com.routineos.databinding.ItemTaskBinding
 
@@ -37,11 +39,15 @@ class TaskAdapter(
             if (task.completed) {
                 binding.titleText.alpha = 0.5f
                 binding.descriptionText.alpha = 0.5f
-                binding.completeButton.setImageResource(android.R.drawable.ic_menu_revert)
+                binding.completeButton.setImageResource(R.drawable.ic_check)
+                binding.completeButton.setColorFilter(
+                    ContextCompat.getColor(itemView.context, R.color.gray_400))
             } else {
                 binding.titleText.alpha = 1.0f
                 binding.descriptionText.alpha = 1.0f
-                binding.completeButton.setImageResource(android.R.drawable.ic_menu_save)
+                binding.completeButton.setImageResource(R.drawable.ic_check)
+                binding.completeButton.setColorFilter(
+                    ContextCompat.getColor(itemView.context, R.color.success_green))
             }
 
             // Show recurring badge

@@ -39,6 +39,10 @@ class EventAdapter(
                 android.view.View.GONE
             }
 
+            binding.deleteButton.setOnClickListener {
+                onEventClick(event)
+            }
+
             binding.root.setOnClickListener {
                 onEventClick(event)
             }

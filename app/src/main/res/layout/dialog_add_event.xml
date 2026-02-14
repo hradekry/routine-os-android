@@ -11,7 +11,10 @@
         android:layout_height="wrap_content"
         android:hint="Title *"
         android:textColorHint="@color/gray_400"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:hintTextColor="@color/routine_purple"
+        app:boxStrokeColor="@color/routine_purple"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/eventTitleInput"
             android:layout_width="match_parent"
@@ -26,7 +29,10 @@
         android:layout_marginTop="12dp"
         android:hint="Description"
         android:textColorHint="@color/gray_400"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:hintTextColor="@color/routine_purple"
+        app:boxStrokeColor="@color/routine_purple"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/eventDescInput"
             android:layout_width="match_parent"
@@ -42,7 +48,10 @@
         android:layout_marginTop="12dp"
         android:hint="Time (e.g. 09:00)"
         android:textColorHint="@color/gray_400"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:hintTextColor="@color/routine_purple"
+        app:boxStrokeColor="@color/routine_purple"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/eventTimeInput"
             android:layout_width="match_parent"

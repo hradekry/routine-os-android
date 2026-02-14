@@ -63,10 +63,12 @@
         </LinearLayout>
 
         <ImageButton
+            android:id="@+id/deleteButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_delete"
+            android:contentDescription="Delete event"
             android:tint="@color/error_red" />
 
     </LinearLayout>

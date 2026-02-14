@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:hint="Task Title *"
         android:textColorHint="@color/gray_400"
+        app:hintTextColor="@color/routine_purple"
+        app:boxStrokeColor="@color/routine_purple"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/taskTitleInput"
@@ -27,6 +29,8 @@
         android:layout_marginTop="12dp"
         android:hint="Description"
         android:textColorHint="@color/gray_400"
+        app:hintTextColor="@color/routine_purple"
+        app:boxStrokeColor="@color/routine_purple"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/taskDescInput"

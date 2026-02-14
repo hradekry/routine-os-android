@@ -79,7 +79,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_save"
+                android:src="@drawable/ic_check"
+                android:contentDescription="Toggle complete"
                 android:tint="@color/success_green" />
 
             <ImageButton
